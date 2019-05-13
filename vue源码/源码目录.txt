@@ -1,0 +1,15 @@
+src 
+   compiler --编译相关
+   core     --核心代码
+   platforms --平台兼容
+   server    --服务器渲染
+   sfc       --.vue文件解析
+   share     --共享代码  
+
+源码构建
+   读取环境 
+   由环境读取相关配置
+
+分为 runtimeonly 需要提前编译 在render中渲染 借助如 webpack 的 vue-loader 工具把 .vue 文件编译成JavaScript 体积轻量
+    runtimeonlye + compiler  
+     
