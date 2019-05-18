@@ -1,0 +1,25 @@
+引入相关js和css
+ 
+ 特效:国际化 自定义主题   内置过度动画
+
+ 组件：
+  layout布局: 每行24格布局 <el-row :gutter="20"><el-col :span="6"></el-col></el-row> gutter每栏之间的间隔 默认为0 :span为所占比例 一行为24
+    el-row属性
+      :gutter = "20" 每栏之间的间隔
+      type ="flex"  启动flex布局
+      justify="center" 定义子元素的排版方式 和type属性一起使用
+    el-col属性
+      :span="6" 栏所占比例
+      :offset="6"  栏的偏移量
+    
+    响应式布局
+      参照bootstrap 有xs、sm、md、lg 和 xl布局
+      基于断点的隐藏类  在某种尺寸时隐藏元素 要额外引入css
+
+  container容器 采用的flex布局
+    <el-container></el-container>外层容器,当子元素包含<el-header></el-header>或<el-footer></el-footer>时,全部子元素会垂直上下排列,否则会水平左右排列
+    <el-header>：顶栏容器。
+    <el-aside>：侧边栏容器。
+    <el-main>：主要区域容器。
+    <el-footer>：底栏容器。
+  
