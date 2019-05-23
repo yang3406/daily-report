@@ -1,0 +1,15 @@
+5.21 
+数组去重  扁平化  复制对象
+
+5.22
+debouce(防抖)   throttle(节流) 表现和能解决一些什么问题
+
+5.23
+原型链 继承优缺点 prototype call() 合并
+
+单例 只允许初始化一次 对象 var utils = {}
+
+闭包 结构 优缺点  巧用  衍生函数柯里化(curry)
+
+css 1px和其它问题
+https://juejin.im/post/5cddf289f265da038f77696c?utm_source=gold_browser_extension
