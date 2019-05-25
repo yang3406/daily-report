@@ -13,3 +13,9 @@ debouce(防抖)   throttle(节流) 表现和能解决一些什么问题
 
 css 1px和其它问题
 https://juejin.im/post/5cddf289f265da038f77696c?utm_source=gold_browser_extension
+
+
+5.25 scss
+嵌套   引用父元素&   占位符%foo需要在extend中使用
+
+变量$开头 有作用域的概念  css插值 #{}  
