@@ -19,3 +19,79 @@ https://juejin.im/post/5cddf289f265da038f77696c?utm_source=gold_browser_extensio
 嵌套   引用父元素&   占位符%foo需要在extend中使用
 
 变量$开头 有作用域的概念  css插值 #{}  
+
+5.31
+js数据类型 原始类型和对象类型
+ 一:原始数据类型 有:Undefined,Null,Boolean,String,Number,Symbol 是存在栈内存中，
+   栈内存特点:1:存储的值大小固定 2:空间较小 3:可以直接操作其变量的值 4:由系统自动分配存储空间
+   结果 :以字符串的方法为例: 没有任何方法是可以直接改变字符串的.都是返回的改变值
+ 二:对象类型:Object 有Object Array Function 存储在堆内存中
+   堆内存:1:存储的值大小不定，可动态调整 2:空间较大，运行效率低 3:无法直接操作其内部存储，使用引用地址读取 4:通过代码进行分配空间
+
+
+null 和 undefined
+null 表示被赋值过的对象 值为空,不应有值
+undefined 表示缺少值,表示此处应有值,但还没有值 
+不应该定义 obj.name = undefined应该 用delete obj.name
+
+精度丢失；
+0.1 + 0.2 != 0.3  计算机会把所有十进制转为二进制 进行计算后 在转为十进制  0.1.toString(2) 发现是无穷的 保留64位双精度浮点编码 解决引入其他的js等
+
+Boolean 
+false: "" null undefined false 0 NaN
+true:除去上面为false的
+隐式转换
+我们在对各种非Number类型运用数学运算符(- * /)时，会先将非Number类型转换为Number类型;
+1 - true = 0; //true为1
+1 - null = 1;  // null 为0
+1 * undefined = NaN //undefined为NaN
+2 * ['5'] = 10 
+注意 + 是例外 两天都为数字类型才转换(true 和fasle 会被转换)
+例如 123 + '123' = 123123  123 + true = 123 
+
+1.NaN == NaN //为false NaN和任何值比较都返回false
+
+2.Boolean
+Boolean和其他任何类型比较，Boolean首先被转换为Number类型。
+true == ['1']  // true
+
+3.String和Number
+String和Number比较，先将String转换为Number类型。
+'' == 0 //true
+
+4.null和undefined
+null == undefined比较结果是true，除此之外，null、undefined和其他任何结果的比较值都为false。
+
+5.原始类型和引用类型
+当原始类型和引用类型做比较时，对象类型会依照ToPrimitive规则转换为原始类型:
+'[object Object]' == {} // true
+'1,2,3' == [1, 2, 3] // true 
+根据数组的ToPrimitive规则，数组元素为null或undefined时，该元素被当做空字符串处理，所以[null]、[undefined]都会被转换为0。
+最好用 === 来进行判断
+
+6.引用类型和引用类型 作比较时 会比较存储地址
+var obja = [1,2,3];
+var objb = [1,2,3];
+obja == objb //false
+
+7:装箱和拆箱
+基本类型  转为 引用类型  装箱  
+应用类型  转为 基本类型  拆箱
+遵守规则  当引用类型转为number时 先调用valueOf 在调用toString 
+遵守规则  当引用类型转为string类型时 先调用toString 在调用valueOf 
+例如
+let obj = {
+  valueOf: () => {console.log("valueof"); return 123},
+  toString: () => {console.log("toString"); return 'hello'}
+}
+console.log(obj-1); //valueof 122
+console.log(`${obj} World`);
+
+经典面试题
+一道经典的面试题，如何让：a == 1 && a == 2 && a == 3。
+解答  隐形转number valueOf
+const a = {
+   value:[1,2,3],
+   valueOf: function(){return this.value.pop()};
+}
+
